@@ -12,6 +12,7 @@ module.exports={
                 .addStringOption(a=>a.setName("thumbnail").setDescription("Set embed thumbnail"))
                 .addStringOption(a=>a.setName("footer").setDescription("Set embed footer"))
                 .addStringOption(a=>a.setName("title").setDescription("Set embed title"))
+                .addStringOption(a=>a.setName("url").setDescription("Set embed title url"))
         ).addSubcommand(o=>
             o.setName("preview").setDescription("Preview your embed")
         ).addSubcommand(o=>
@@ -29,6 +30,7 @@ module.exports={
         const thumbnail = interaction.options.getString("thumbnail")
         const footer= interaction.options.getString("footer")
         const title = interaction.options.getString("title")
+        const url = interaction.options.getString("url")
         if(subcommand=="generate"){
             embed=new MessageEmbed()
             if(color&&color.startsWith("#")&&color.length==7){
@@ -48,6 +50,7 @@ module.exports={
                 if(image)embed.setImage(image)
                 if(thumbnail)embed.setThumbnail(thumbnail)
                 if(footer)embed.setFooter({text:`${footer}`})
+                if(url)embed.setURL(url)
                 interaction.reply({content:"Look after changes:",embeds:[embed],ephemeral:true})
             }catch(e){
                 interaction.reply(e)
