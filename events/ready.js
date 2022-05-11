@@ -17,7 +17,7 @@ module.exports=(bot)=>{
             console.log('Started refreshing guild application (/) commands.');
     
             await rest.put(
-                Routes.applicationGuildCommands(bot.user.id, '935170777760813106'),
+                Routes.applicationGuildCommands(bot.user.id, bot.config.guildId),
                 { body: commands},
             );
     
