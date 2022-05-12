@@ -36,7 +36,7 @@ module.exports={
             if(color&&color.startsWith("#")&&color.length==7){
                 embed.setColor(color)
             }else if(color){
-                return await interaction.reply("Invalid color hex")
+                return await interaction.reply({content:"Invalid color hex",ephemeral:true})
             }
             if(color){
                 await interaction.reply({content:`Generated embed ${color?`with color ${color}`:""}`,ephemeral:true})
